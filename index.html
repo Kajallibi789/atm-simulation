@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ATM Simulation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="info-bar" class="poppins-semibold">
+        <div class="date">
+          <!-- <img src="assets/calender.png" alt="Date" width="20" /> -->
+          <span id="date"></span>
+        </div>
+        <div class="time">
+          <!-- <img src="assets/clock.png" alt="Time" width="20" /> -->
+          <span id="time"></span>
+        </div>
+        <div class="weather">
+          <!-- <img src="assets/weather.png" alt="Weather" width="20" /> -->
+          <span id="weather"></span>
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <div>
+          <h1 class="poppins-semibold welcome">Welcome</h1>
+          <p class="subhead poppins-light">
+            To begin using this<br />ATM’s services,<br />please insert your
+            card
+          </p>
+          <!-- <div class="card-slot">
+            <img src="assets/card.png" id="atm-card" alt="ATM Card">
+        </div> -->
+          <button class="access-button poppins-light" id="card-inserted">
+            INSERTED
+          </button>
+        </div>
+
+        <div class="atm-container">
+          <div class="atm-slot"></div>
+          <img src="assets/card.png" class="atm-card" alt="ATM Card" />
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js">
+      //   document
+      //     .getElementById('card-inserted')
+      //     .addEventListener('click', function () {
+      //       this.style.animation = 'insertCard 1s forwards'
+      //       setTimeout(() => {
+      //         window.location.href = 'pin.html' // Redirect after animation
+      //       }, 1200)
+      //     })
+    </script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Card Animation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="atm-container">
+        <div class="atm-slot"></div>
+        <img src="assets/card.png" class="atm-card" alt="ATM Card">
+    </div>
+</body>
+</html> -->

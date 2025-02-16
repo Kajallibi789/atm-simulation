@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@1,5..1200,800&family=Poppins:wght@300;400;500;600;800&display=swap");
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: block;
+    color: #FDFFFF;
+    background: radial-gradient(circle at center, rgba(6, 0, 41, 0.7), rgba(0, 0, 0, 0.9));
+}
+.container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 6rem;
+}
+.sub-container {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    color: #FDFFFF;
+}
+.date{
+    width: 7rem;
+}
+.time{
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+}
+.welcome{    
+  font-size: 3.5rem;
+}
+.weather{
+    width: 7rem;
+    display: flex;
+    justify-content: end;
+}
+.poppins-light {
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* Button Styling */
+.access-button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    box-shadow: 0 0 9px rgb(255 255 255 / 28%);
+    padding: 12px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect */
+.access-button:hover {
+    box-shadow: 0 0 9px rgb(255 255 255 / 42%);
+}
+
+/* Click effect */
+.access-button:active {
+  transform: scale(0.95);
+}
+
+.card-slot img {
+  width: 200px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.card-slot img:hover {
+  transform: scale(1.05);
+}
+
+.subhead {
+  font-size: 1.5rem;
+}
+
+.atm-container {
+  position: relative;
+  width: 250px;
+  height: 400px;
+  background: none;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hole-like slot */
+.atm-slot {
+    position: absolute;
+    top: 81px;
+    width: 15rem;
+    height: 20px;
+    background: none;
+    border-radius: 10px;
+    box-shadow: 0 0 9px rgb(255 255 255 / 28%);
+}
+
+/* Card styling */
+.atm-card {
+  position: absolute;
+  top: 5rem;
+  width: 13rem;
+  animation: cardAnimation 3s infinite ease-in-out;
+}
+
+#info-bar{
+    font-size: 12px !important;
+    color: rgb(226, 226, 226);
+    display: flex;
+    gap: 8rem;
+}
+
+/* Animation */
+@keyframes cardAnimation {
+  0% {
+    transform: translateY(40px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(40px);
+  }
+}
