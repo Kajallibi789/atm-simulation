@@ -7,27 +7,31 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="date-time"></div>
-<div id="weather"></div>
 
     <div class="container">
-        <h1>Enter Your PIN</h1>
-        <input type="password" id="pin" maxlength="4">
-        <br>
-        <button onclick="checkPin()">Submit</button>
+        <div id="info-bar" class="poppins-semibold">
+            <div class="date">
+              <span id="date"></span>
+            </div>
+            <div class="time">
+              <span id="time"></span>
+            </div>
+            <div class="weather">
+              <span id="weather"></span>
+            </div>
+        </div>
+        <script src="datetime-weather.js"></script>
+
+        <div class="pin-container">
+            <img src="assets/card1.png" class="card-image" alt="ATM Card">
+            <p class="pin-text">Enter your PIN to continue</p>
+
+            <div class="pin-input-container">
+                <input type="password" id="pin-input" maxlength="4" inputmode="numeric" autofocus>
+            </div>
+        </div>
     </div>
 
-    <script>
-        function checkPin() {
-            let enteredPin = document.getElementById("pin").value;
-            let correctPin = "1234"; // Hardcoded PIN
-
-            if (enteredPin === correctPin) {
-                window.location.href = "menu.html"; // Redirect to main menu
-            } else {
-                alert("Incorrect PIN. Try again.");
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
