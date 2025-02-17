@@ -17,6 +17,16 @@ body, html {
     position: relative;
     top: 6rem;
 }
+.header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  p{
+    font-size: 15px;
+    color: #999;
+  }
+}
 .exit-container {
   display: flex;
   justify-content: space-between;
@@ -292,7 +302,7 @@ input#pin-input {
 .exit-arrow {
   margin: 26px; 
   cursor: pointer;
-  color: rgb(154, 15, 15);
+  color: red;
 }
 
 #exit-message{
@@ -302,7 +312,7 @@ input#pin-input {
 .title {
   font-size: 24px;
   font-weight: 600;
-  margin: 3rem 1rem 2rem 1rem;
+  margin: 3rem 1rem 0rem 1rem;
 }
 
 .amount-container {
