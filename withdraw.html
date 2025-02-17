@@ -9,9 +9,15 @@
 <body>
     <div class="container">
         <div id="info-bar" class="poppins-semibold">
-            <div class="date"><span id="date"></span></div>
-            <div class="time"><span id="time"></span></div>
-            <div class="weather"><span id="weather"></span></div>
+            <div class="date">
+              <span id="date"></span>
+            </div>
+            <div class="time">
+              <span id="time"></span>
+            </div>
+            <div class="weather">
+              <span id="weather"></span>
+            </div>
         </div>
         <script src="datetime-weather.js"></script>
 
@@ -37,6 +43,11 @@
             <img src="assets/bank.png" alt="Bank Logo">
             <span>&nbsp;&nbsp;&nbsp;CITI BANK PVT</span>
         </div>
+
+        <!-- Spinner Overlay -->
+        <div id="spinner-overlay" class="spinner-overlay" style="display: none;">
+            <div class="spinner"></div>
+        </div>
     </div>
 
     <script src="script.js"></script>
@@ -45,6 +56,7 @@
         const amountInWords = document.getElementById('amountInWords');
         const withdrawBtn = document.getElementById('withdrawBtn');
         const errorText = document.getElementById('errorText');
+        const spinnerOverlay = document.getElementById('spinner-overlay');
 
         function numberToWords(num) {
             const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
@@ -129,6 +141,7 @@
 
             withdrawBtn.textContent = 'Processing...';
             withdrawBtn.disabled = true;
+            spinnerOverlay.style.display = 'flex'; // Show spinner overlay
 
             setTimeout(() => {
                 // Update user balance
