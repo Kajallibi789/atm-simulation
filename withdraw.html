@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw Cash</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="back-arrow" onclick="window.location.href='menu.html'">←</span>
+            <h1 class="title">Withdraw Cash</h1>
+        </div>
+        
+        <div class="amount-container">
+            <p class="amount-label">Enter the amount you want to withdraw</p>
+            <div class="amount-input-container">
+                <span class="currency-symbol">KWD</span>
+                <input type="text" class="amount-input" id="amountInput" placeholder="0">
+            </div>
+            <p class="amount-words" id="amountInWords">Zero Only</p>
+        </div>
+
+        <button class="withdraw-btn" id="withdrawBtn">WITHDRAW</button>
+    </div>
+
+    <script>
+        const amountInput = document.getElementById('amountInput');
+        const amountInWords = document.getElementById('amountInWords');
+        const withdrawBtn = document.getElementById('withdrawBtn');
+
+        function numberToWords(num) {
+            const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+            const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+            const teens = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+
+            if (num === 0) return 'Zero Only';
+
+            function convertLessThanThousand(n) {
+                if (n === 0) return '';
+
+                let result = '';
+
+                if (n >= 100) {
+                    result += ones[Math.floor(n / 100)] + ' Hundred ';
+                    n %= 100;
+                }
+
+                if (n >= 20) {
+                    result += tens[Math.floor(n / 10)] + ' ';
+                    n %= 10;
+                } else if (n >= 10) {
+                    result += teens[n - 10] + ' ';
+                    return result;
+                }
+
+                if (n > 0) {
+                    result += ones[n] + ' ';
+                }
+
+                return result;
+            }
+
+            let result = '';
+            let n = parseInt(num);
+
+            if (n >= 1000) {
+                result += convertLessThanThousand(Math.floor(n / 1000)) + 'Thousand ';
+                n %= 1000;
+            }
+
+            result += convertLessThanThousand(n);
+
+            return result.trim() + ' Only';
+        }
+
+        amountInput.addEventListener('input', (e) => {
+            // Remove any non-digit characters
+            let value = e.target.value.replace(/\D/g, '');
+            
+            // Limit to 6 digits
+            if (value.length > 6) {
+                value = value.slice(0, 6);
+            }
+            
+            // Update input value
+            e.target.value = value;
+            
+            // Update amount in words
+            amountInWords.textContent = value ? numberToWords(value) : 'Zero Only';
+            
+            // Enable/disable withdraw button
+            withdrawBtn.disabled = !value;
+        });
+
+        withdrawBtn.addEventListener('click', () => {
+            if (!amountInput.value) return;
+
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            const withdrawAmount = parseInt(amountInput.value);
+
+            if (withdrawAmount > currentUser.balance) {
+                alert("Insufficient Balance, Please collect your card and try again");
+                window.location.href = "exit.html";
+                return;
+            }
+
+            withdrawBtn.textContent = 'Processing...';
+            withdrawBtn.disabled = true;
+
+            // Simulate transaction processing
+            setTimeout(() => {
+                alert('Transaction successful!');
+                amountInput.value = '';
+                amountInWords.textContent = 'Zero Only';
+                withdrawBtn.textContent = 'WITHDRAW';
+                withdrawBtn.disabled = true;
+
+                // Update user balance
+                currentUser.balance -= withdrawAmount;
+                localStorage.setItem("currentUser", JSON.stringify(currentUser));
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

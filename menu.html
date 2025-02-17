@@ -5,22 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Main Menu</title>
     <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
   </head>
   <body>
-    <div id="date-time"></div>
-    <div id="weather"></div>
-
     <div class="container">
-      <h1>Main Menu</h1>
-      <button onclick="navigate('balance.html')">Check Balance</button>
-      <button onclick="navigate('withdraw.html')">Withdraw Money</button>
-      <button onclick="navigate('exit.html')">Exit</button>
-    </div>
+      <!-- Date, Time, and Weather -->
+      <div id="info-bar" class="poppins-semibold">
+        <div class="date">
+          <span id="date"></span>
+        </div>
+        <div class="time">
+          <span id="time"></span>
+        </div>
+        <div class="weather">
+          <span id="weather"></span>
+        </div>
+      </div>
+      <script src="datetime-weather.js"></script>
 
-    <script>
-      function navigate(page) {
-        window.location.href = page
-      }
-    </script>
+      <!-- Main Menu Container -->
+      <div class="menu-container">
+        <h1 id="welcome-message">Welcome</h1>
+        <div class="menu-grid">
+          <button class="menu-btn blue" onclick="navigate('withdraw.html')">
+            <img src="assets/withdraw.png" alt="Withdraw Icon" />
+            Withdraw Money
+          </button>
+          <button class="menu-btn turq" onclick="navigate('deposit.html')">
+            <img src="assets/deposit.png" alt="Deposit Icon" />
+            Deposit Money
+          </button>
+          <button class="menu-btn dark-blue" onclick="navigate('balance.html')">
+            <img src="assets/balance.png" alt="Balance Icon" />
+            Balance Inquiry
+          </button>
+          <button class="menu-btn green" onclick="navigate('exit.html')">
+            <img src="assets/exit.png" alt="Exit Icon" />
+            Exit
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
