@@ -17,6 +17,11 @@ body, html {
     position: relative;
     top: 6rem;
 }
+.exit-container {
+  display: flex;
+  justify-content: space-between;
+  height: 30rem;
+}
 .sub-container {
     display: flex;
     justify-content: center;
@@ -74,7 +79,7 @@ body, html {
     background-color: transparent;
     color: #fff;
     border: none;
-    box-shadow: 0 0 9px rgb(255 255 255 / 28%);
+    box-shadow: 0 0 9px rgb(87 72 186);
     padding: 12px 24px;
     border-radius: 10px;
     cursor: pointer;
@@ -119,13 +124,13 @@ body, html {
 
 /* Hole-like slot */
 .atm-slot {
-    position: absolute;
-    top: 81px;
-    width: 15rem;
-    height: 20px;
-    background: none;
-    border-radius: 10px;
-    box-shadow: 0 0 9px rgb(255 255 255 / 28%);
+  position: absolute;
+  top: 81px;
+  width: 15rem;
+  height: 12px;
+  background: none;
+  border-radius: 10px;
+  box-shadow: 0 0 9px rgb(87 72 186);
 }
 
 /* Card styling */
@@ -190,7 +195,7 @@ input#pin-input {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 30px;
   /* width: inherit; */
   opacity: 50%;
 }
@@ -205,6 +210,15 @@ input#pin-input {
   font-size: 14px;
   color: white;
   font-family: 'Poppins', sans-serif;
+}
+
+.message-container{
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 34rem;
 }
 
 .menu-container {
@@ -234,6 +248,7 @@ input#pin-input {
   cursor: pointer;
   width: 12rem;
   transition: 0.3s;
+  box-shadow: 0 0 9px rgb(87 72 186);
 }
 
 .menu-btn.green {
@@ -253,6 +268,7 @@ input#pin-input {
 
 .menu-btn:hover {
   opacity: 0.8;
+  box-shadow: 0 0 9px rgb(255 255 255 / 42%);
 }
 
 
@@ -270,18 +286,25 @@ input#pin-input {
 }
 
 
-.back-arrow {
-  margin-right: 12px;
+.exit-arrow {
+  margin: 26px; 
   cursor: pointer;
+  color: rgb(154, 15, 15);
+}
+
+#exit-message{
+  text-align: center;
 }
 
 .title {
   font-size: 24px;
   font-weight: 600;
+  margin: 3rem 1rem 2rem 1rem;
 }
 
 .amount-container {
   background-color: #111;
+  opacity: 70%;
   border-radius: 12px;
   padding: 24px;
   margin-bottom: 20px;
@@ -318,7 +341,7 @@ input#pin-input {
 }
 
 .withdraw-btn {
-  width: 30%;
+  width: 16%;
   padding: 16px;
   background-color: #0066ff;
   border: none;

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exit</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container exit-container">
+    
+        <div id="info-bar" class="poppins-semibold">
+            <div class="date">
+              <span id="date"></span>
+            </div>
+            <div class="time">
+              <span id="time"></span>
+            </div>
+            <div class="weather">
+              <span id="weather"></span>
+            </div>
+        </div>
+        <script src="datetime-weather.js"></script>
+        <div class="message-container">
+            <h1 id="exit-message"></h1>
+            <button class="access-button poppins-light" onclick="window.location.href='index.html'">Return to Home</button>
+        </div>
+        <div class="bank-logo">
+            <img src="assets/bank.png" alt="Bank Logo">
+            <span>&nbsp;&nbsp;&nbsp;CITI BANK PVT</span>
+          </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const message = urlParams.get('message');
+        const exitMessage = document.getElementById('exit-message');
+
+        if (message === 'insufficient') {
+            exitMessage.textContent = 'Insufficient Balance, Please collect your card and try again';
+        } else if (message === 'success') {
+            exitMessage.textContent = 'Transaction successful! Thank you for using CITI ATM';
+        } else if (message === 'incorrect') {
+            exitMessage.textContent = 'Incorrect Pin, Please try again';
+        } else if (message === 'deposit-success') {
+            exitMessage.textContent = 'Successfully Deposited Cash, Thank you for using our services';
+        } else if (message === 'balance-check') {
+            exitMessage.textContent = 'Balance check completed. Thank you for using our services';
+        } else {
+            exitMessage.textContent = 'Thank you for using CITI Bank ATM!';
+        }
+    </script>
+</body>
+</html>

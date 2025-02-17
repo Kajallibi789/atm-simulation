@@ -1,4 +1,15 @@
+// Initialize accounts from localStorage or use default values
+let accounts = JSON.parse(localStorage.getItem('accounts')) || [
+  { username: "Ahmed", pin: "1234", balance: 5000 },
+  { username: "Kajal", pin: "1111", balance: 3000 }
+];
 
+// Save accounts to localStorage
+function saveAccounts() {
+  localStorage.setItem('accounts', JSON.stringify(accounts));
+}
+
+// Handle card insertion
 const cardInsertedButton = document.getElementById('card-inserted');
 if (cardInsertedButton) {
   cardInsertedButton.addEventListener('click', function () {
@@ -6,14 +17,6 @@ if (cardInsertedButton) {
     window.location.href = 'pin.html'; // Instantly loads pin.html
   });
 }
-
-
-
-
-const accounts = [
-  { username: "Ahmed", pin: "1234", balance: 5000 },
-  { username: "Kajal", pin: "1111", balance: 3000 }
-];
 
 // Handle PIN Input
 const pinInput = document.getElementById("pin-input");
@@ -50,7 +53,7 @@ if (pinInput && dots) {
         localStorage.setItem("currentUser", JSON.stringify(user)); // Store user data for transactions
         window.location.href = "menu.html"; // Redirect to transaction menu
       } else {
-        window.location.href = "exit.html"; // Redirect to exit page
+        window.location.href = "exit.html?message=incorrect"; // Redirect to exit page with incorrect PIN message
       }
     }
   });
@@ -61,7 +64,7 @@ const welcomeMessage = document.getElementById('welcome-message');
 if (welcomeMessage) {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   if (currentUser) {
-    welcomeMessage.textContent = `Welcome ${currentUser.username}`;
+    welcomeMessage.textContent = `Welcome ${currentUser.username}!`;
   }
 }
 

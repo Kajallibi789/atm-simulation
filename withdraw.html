@@ -8,8 +8,19 @@
 </head>
 <body>
     <div class="container">
+        <div id="info-bar" class="poppins-semibold">
+            <div class="date">
+              <span id="date"></span>
+            </div>
+            <div class="time">
+              <span id="time"></span>
+            </div>
+            <div class="weather">
+              <span id="weather"></span>
+            </div>
+        </div>
+        <script src="datetime-weather.js"></script>
         <div class="header">
-            <span class="back-arrow" onclick="window.location.href='menu.html'">←</span>
             <h1 class="title">Withdraw Cash</h1>
         </div>
         
@@ -22,9 +33,15 @@
             <p class="amount-words" id="amountInWords">Zero Only</p>
         </div>
 
-        <button class="withdraw-btn" id="withdrawBtn">WITHDRAW</button>
-    </div>
+        <button class="access-button poppins-light" id="withdrawBtn">WITHDRAW</button>
+        <span class="exit-arrow" onclick="window.location.href='menu.html'">GO BACK</span>
 
+        <div class="bank-logo">
+            <img src="assets/bank.png" alt="Bank Logo">
+            <span>&nbsp;&nbsp;&nbsp;CITI BANK PVT</span>
+          </div>
+    </div>
+    <script src="script.js"></script>
     <script>
         const amountInput = document.getElementById('amountInput');
         const amountInWords = document.getElementById('amountInWords');
@@ -95,33 +112,33 @@
         });
 
         withdrawBtn.addEventListener('click', () => {
-            if (!amountInput.value) return;
+    if (!amountInput.value) return;
 
-            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-            const withdrawAmount = parseInt(amountInput.value);
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    const withdrawAmount = parseInt(amountInput.value);
 
-            if (withdrawAmount > currentUser.balance) {
-                alert("Insufficient Balance, Please collect your card and try again");
-                window.location.href = "exit.html";
-                return;
-            }
+    if (withdrawAmount > currentUser.balance) {
+        window.location.href = "exit.html?message=insufficient";
+        return;
+    }
 
-            withdrawBtn.textContent = 'Processing...';
-            withdrawBtn.disabled = true;
+    withdrawBtn.textContent = 'Processing...';
+    withdrawBtn.disabled = true;
 
-            // Simulate transaction processing
-            setTimeout(() => {
-                alert('Transaction successful!');
-                amountInput.value = '';
-                amountInWords.textContent = 'Zero Only';
-                withdrawBtn.textContent = 'WITHDRAW';
-                withdrawBtn.disabled = true;
-
-                // Update user balance
-                currentUser.balance -= withdrawAmount;
-                localStorage.setItem("currentUser", JSON.stringify(currentUser));
-            }, 2000);
-        });
-    </script>
+    setTimeout(() => {
+        // Update user balance
+        currentUser.balance -= withdrawAmount;
+        
+        // Update accounts array
+        const userIndex = accounts.findIndex(acc => acc.pin === currentUser.pin);
+        accounts[userIndex] = currentUser;
+        
+        // Save everything back to localStorage
+        saveAccounts(); // This function is from script.js
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        
+        window.location.href = "exit.html?message=success";
+    }, 2000);
+});    </script>
 </body>
 </html>
