@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Balance Inquiry</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="container">
-        <div id="info-bar" class="poppins-semibold">
-            <div class="date">
-              <span id="date"></span>
-            </div>
-            <div class="time">
-              <span id="time"></span>
-            </div>
-            <div class="weather">
-              <span id="weather"></span>
-            </div>
+      <div id="info-bar" class="poppins-semibold">
+        <div class="date">
+          <span id="date"></span>
         </div>
-        <script src="datetime-weather.js"></script>
-        <div class="header">
-            <h1 class="title">Balance Inquiry</h1>
+        <div class="time">
+          <span id="time"></span>
         </div>
-        
-        <div class="balance-container">
-            <p class="balance-label">Your current balance is:</p>
-            <p class="balance-amount" id="balanceAmount">KWD 0</p>
+        <div class="weather">
+          <span id="weather"></span>
         </div>
+      </div>
+      <script src="datetime-weather.js"></script>
+      <div class="header">
+        <h1 class="title">Balance Inquiry</h1>
+      </div>
 
-        <button class="ok-btn" id="okBtn">OK</button>
+      <div class="amount-container">
+        <p class="balance-label poppins-light">Your current balance is:</p>
+        <p class="balance-amount poppins-semibold" id="balanceAmount">KWD 0</p>
+      </div>
+
+      <button class="access-button okay poppins-light" id="okBtn">OK</button>
+      <div class="bank-logo">
+        <img src="assets/bank.png" alt="Bank Logo" />
+        <span>&nbsp;&nbsp;&nbsp;CITI BANK PVT</span>
+      </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-            const balanceAmount = document.getElementById('balanceAmount');
-            const okBtn = document.getElementById('okBtn');
+      document.addEventListener('DOMContentLoaded', () => {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+        const balanceAmount = document.getElementById('balanceAmount')
+        const okBtn = document.getElementById('okBtn')
 
-            if (currentUser) {
-                balanceAmount.textContent = `KWD ${currentUser.balance}`;
-            }
+        if (currentUser) {
+          balanceAmount.textContent = `KWD ${currentUser.balance}`
+        }
 
-            okBtn.addEventListener('click', () => {
-                window.location.href = "exit.html?message=balance-check";
-            });
-        });
+        okBtn.addEventListener('click', () => {
+          window.location.href = 'exit.html?message=balance-check'
+        })
+      })
     </script>
-</body>
+  </body>
 </html>

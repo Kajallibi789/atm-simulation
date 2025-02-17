@@ -86,6 +86,9 @@ body, html {
     outline: none;
     transition: all 0.3s ease-in-out;
 }
+.access-button.okay{
+  width: 10rem;
+}
 
 /* Hover effect */
 .access-button:hover {
@@ -303,11 +306,22 @@ input#pin-input {
 }
 
 .amount-container {
-  background-color: #111;
-  opacity: 70%;
+  background-color: #111111d0;
   border-radius: 12px;
   padding: 24px;
   margin-bottom: 20px;
+}
+
+.balance-amount{
+  text-align: center;
+  color: #FDFFFF;
+  font-size: 2rem;
+  transition: 0.3s;
+}
+
+.balance-amount:hover{
+  text-shadow: 0.2em 0.2em #333;
+  cursor: none;
 }
 
 .amount-label {
